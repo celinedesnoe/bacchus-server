@@ -2,25 +2,19 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+const cellarSchema = new Schema(
   {
     name: { type: String, required: true },
-    email: { type: String, required: true },
-    encryptedPassword: { type: String, required: true },
-    profilePic: {
-      type: String,
-      default:
-        "https://scontent-frx5-1.cdninstagram.com/vp/973f5d72a5217d4b771ed4a941e6f138/5D0566F1/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=scontent-frx5-1.cdninstagram.com"
-    },
-    cellars: [{ type: Schema.Types.ObjectId, ref: "Cellar" }]
+    owners: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    capacity: { type: Number, required: true }
   },
   {
     timestamps: true
   }
 );
 
-const User = mongoose.model("User", userSchema);
-module.exports = User;
+const Cellar = mongoose.model("Cellar", cellarSchema);
+module.exports = Cellar;
 
 // ###################################################
 // EXAMPLE
