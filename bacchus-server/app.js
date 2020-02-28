@@ -66,6 +66,9 @@ app.use(passport.session());
 const auth = require("./routes/auth-router.js");
 app.use("/api", auth);
 
+const cellar = require("./routes/cellar-router.js");
+app.use("/api", cellar);
+
 // const post = require("./routes/post-router.js");
 // app.use("/api", post);
 

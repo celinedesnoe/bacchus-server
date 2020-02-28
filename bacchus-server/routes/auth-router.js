@@ -8,9 +8,7 @@ const bcrypt = require("bcrypt");
 // ************************
 
 router.post("/process-signup", (req, res, next) => {
-  console.log("HELLO");
-
-  const { email, originalPassword } = req.body;
+  const { email, originalPassword, name } = req.body;
 
   // enforce password rules (can't be empty and MUST have a digit)
   if (!originalPassword || !originalPassword.match(/[0-9]/)) {
@@ -22,19 +20,17 @@ router.post("/process-signup", (req, res, next) => {
   const encryptedPassword = bcrypt.hashSync(originalPassword, 10);
   // return res.send(JSON.stringify(encryptedPassword));
   User.create({
+    name,
     email,
     encryptedPassword
   })
     .then(userDoc => {
-      console.log("userDoc", userDoc);
+      req.logIn(userDoc, () => {
+        // hide encrypted password before sending the JSON (it's a security risk)
+        userDoc.encryptedPassword = undefined;
 
-      // req.logIn(userDoc, () => {
-      //   // hide encrypted password before sending the JSON (it's a security risk)
-      //   userDoc.encryptedPassword = undefined;
-      //   console.log("HELLO");
-
-      res.json(userDoc);
-      // });
+        res.json(userDoc);
+      });
     })
     .catch(err => next(err));
   // return res.send("so far so food");
