@@ -15,26 +15,3 @@ const cellarSchema = new Schema(
 
 const Cellar = mongoose.model("Cellar", cellarSchema);
 module.exports = Cellar;
-
-// ###################################################
-// EXAMPLE
-// ###################################################
-
-// {
-//   _id: "5fgw402834yhwegr3"
-//   username: "frietpoune",
-//   firstName: "Céline",
-//   lastName: "Desnoë",
-//   email: "frietpoune92@hotmail.fr",
-//   encryptedPassword: "2342euwhn23jk4h2ej234",
-//   bio: "Coding Hard",
-//   website: "https://www.frietpoune.fr",
-//   profilePic: "http://ermbkjhtnaeklrjthe.fr",
-//   phoneNumber: 0698632152,
-//   sex: female,
-//   facebookAccount: "frietpoune92@hotmail.fr",
-//   following: ["laurastromboni", "brwncluse", ... ],
-//   followers: ["laurastromboni", "brwncluse", ... ],
-//   // likedPosts: { type: Array },
-//   taggedPics: ["post_.id 1", ...]
-// }
