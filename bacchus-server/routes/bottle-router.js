@@ -16,7 +16,8 @@ router.post("/process-create-bottle", (req, res, next) => {
     region,
     country,
     nb,
-    price
+    price,
+    userId
   } = req.body;
 
   Bottle.create({
@@ -28,7 +29,8 @@ router.post("/process-create-bottle", (req, res, next) => {
     region,
     country,
     nb,
-    price
+    price,
+    userId
   })
     .then(bottleDoc => {
       res.json(bottleDoc);
