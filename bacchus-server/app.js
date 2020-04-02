@@ -69,6 +69,9 @@ app.use("/api", auth);
 const cellar = require("./routes/cellar-router.js");
 app.use("/api", cellar);
 
+const bottle = require("./routes/bottle-router.js");
+app.use("/api", bottle);
+
 // const post = require("./routes/post-router.js");
 // app.use("/api", post);
 
