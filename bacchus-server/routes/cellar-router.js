@@ -9,7 +9,6 @@ const router = express.Router();
 // ************************
 
 router.post("/process-create-cellar", (req, res, next) => {
-  console.log(req.body);
   const { name, capacity } = req.body;
   Cellar.create({
     name,

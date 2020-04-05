@@ -38,4 +38,22 @@ router.post("/process-create-bottle", (req, res, next) => {
     .catch(err => next(err));
 });
 
+// ************************
+//    GET BOTTLES OF A USER
+// ************************
+
+router.post("/process-all-bottles/:_id", (req, res, next) => {
+  const { _id } = req.params;
+  // "5e81e9d3bfddfe07d6957b7d"
+  Bottle.find({
+    userId: { $eq: _id }
+  })
+    .then(bottlesDoc => {
+      res.json(bottlesDoc);
+    })
+    .catch(err => {
+      next(err);
+    });
+});
+
 module.exports = router;
