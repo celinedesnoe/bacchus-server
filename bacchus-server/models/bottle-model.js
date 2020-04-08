@@ -6,14 +6,14 @@ const bottleSchema = new Schema(
   {
     userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     name: { type: String, required: true },
-    color: { type: String, required: true },
-    millesime: { type: String, required: true },
+    color: { type: String },
+    millesime: { type: String },
     appellation: { type: String },
     cépage: { type: String },
     region: { type: String },
     country: { type: String },
-    nb: { type: Number, required: true },
-    price: { type: Number, required: true }
+    nb: { type: Number },
+    price: { type: Number }
   },
   {
     timestamps: true

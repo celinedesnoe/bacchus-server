@@ -44,7 +44,6 @@ router.post("/process-create-bottle", (req, res, next) => {
 
 router.post("/process-all-bottles/:_id", (req, res, next) => {
   const { _id } = req.params;
-  // "5e81e9d3bfddfe07d6957b7d"
   Bottle.find({
     userId: { $eq: _id }
   })
