@@ -10,9 +10,9 @@ router.post("/process-create-bottle", (req, res, next) => {
   const {
     name,
     color,
-    millesime,
+    vintage,
     appellation,
-    cépage,
+    cepage,
     region,
     country,
     nb,
@@ -23,9 +23,9 @@ router.post("/process-create-bottle", (req, res, next) => {
   Bottle.create({
     name,
     color,
-    millesime,
+    vintage,
     appellation,
-    cépage,
+    cepage,
     region,
     country,
     nb,
