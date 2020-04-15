@@ -17,7 +17,7 @@ router.post("/process-create-bottle", (req, res, next) => {
     country,
     nb,
     price,
-    userId
+    userId,
   } = req.body;
 
   Bottle.create({
@@ -30,12 +30,12 @@ router.post("/process-create-bottle", (req, res, next) => {
     country,
     nb,
     price,
-    userId
+    userId,
   })
-    .then(bottleDoc => {
+    .then((bottleDoc) => {
       res.json(bottleDoc);
     })
-    .catch(err => next(err));
+    .catch((err) => next(err));
 });
 
 // ************************
@@ -45,12 +45,43 @@ router.post("/process-create-bottle", (req, res, next) => {
 router.post("/process-all-bottles/:_id", (req, res, next) => {
   const { _id } = req.params;
   Bottle.find({
-    userId: { $eq: _id }
+    userId: { $eq: _id },
   })
-    .then(bottlesDoc => {
+    .then((bottlesDoc) => {
       res.json(bottlesDoc);
     })
-    .catch(err => {
+    .catch((err) => {
+      next(err);
+    });
+});
+
+// *****************************
+//    CHANGE NUMBER OF A BOTTLE
+// *****************************
+
+router.put("/process-update-bottle-number/:_id", (req, res, next) => {
+  const { _id } = req.params;
+  const { bottle } = req.body;
+  Bottle.findByIdAndUpdate(
+    _id,
+    {
+      nb: bottle.nb,
+      name: bottle.name,
+      color: bottle.color,
+      vintage: bottle.vintage,
+      appellation: bottle.appellation,
+      cepage: bottle.cepage,
+      region: bottle.region,
+      country: bottle.country,
+      nb: bottle.nb,
+      price: bottle.price,
+    },
+    { new: true, runValidors: true }
+  )
+    .then((bottlesDoc) => {
+      res.json(bottlesDoc);
+    })
+    .catch((err) => {
       next(err);
     });
 });
