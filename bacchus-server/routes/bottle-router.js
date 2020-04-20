@@ -73,12 +73,15 @@ router.put("/process-update-bottle-number/:_id", (req, res, next) => {
       cepage: bottle.cepage,
       region: bottle.region,
       country: bottle.country,
-      nb: bottle.nb,
       price: bottle.price,
+      isFav: bottle.isFav,
+      comments: bottle.comments,
     },
     { new: true, runValidors: true }
   )
     .then((bottlesDoc) => {
+      console.log("bottlesDoc", bottlesDoc);
+
       res.json(bottlesDoc);
     })
     .catch((err) => {

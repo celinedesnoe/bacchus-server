@@ -13,10 +13,12 @@ const bottleSchema = new Schema(
     region: { type: String },
     country: { type: String },
     nb: { type: Number },
-    price: { type: Number }
+    price: { type: Number },
+    isFav: { type: Boolean },
+    comments: { type: Array },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 
