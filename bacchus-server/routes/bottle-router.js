@@ -18,6 +18,7 @@ router.post("/process-create-bottle", (req, res, next) => {
     nb,
     price,
     userId,
+    pictures,
   } = req.body;
 
   Bottle.create({
@@ -31,6 +32,7 @@ router.post("/process-create-bottle", (req, res, next) => {
     nb,
     price,
     userId,
+    pictures,
   })
     .then((bottleDoc) => {
       res.json(bottleDoc);
@@ -76,6 +78,7 @@ router.put("/process-update-bottle-number/:_id", (req, res, next) => {
       price: bottle.price,
       isFav: bottle.isFav,
       comments: bottle.comments,
+      pictures: bottle.pictures,
     },
     { new: true, runValidors: true }
   )

@@ -16,12 +16,12 @@ require("./config/passport-setup.js");
 
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
-  .then(x => {
+  .then((x) => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
     );
   })
-  .catch(err => {
+  .catch((err) => {
     console.error("Error connecting to mongo", err);
   });
 
@@ -42,7 +42,7 @@ app.use(
     // receive cookies from other domains/origins
     credentials: true,
     // only these domains/origins can access the API
-    origin: ["http://localhost:3000"]
+    origin: ["http://localhost:3000"],
   })
 );
 
@@ -53,7 +53,7 @@ app.use(
     // session secret must be different for every app
     secret: process.env.SESSION_SECRET,
     // save session info inside MongoDB
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
 
@@ -71,6 +71,9 @@ app.use("/api", cellar);
 
 const bottle = require("./routes/bottle-router.js");
 app.use("/api", bottle);
+
+const file = require("./routes/file-router.js");
+app.use("/api", file);
 
 // const post = require("./routes/post-router.js");
 // app.use("/api", post);

@@ -16,6 +16,7 @@ const bottleSchema = new Schema(
     price: { type: Number },
     isFav: { type: Boolean },
     comments: { type: Array },
+    pictures: { type: Array },
   },
   {
     timestamps: true,
