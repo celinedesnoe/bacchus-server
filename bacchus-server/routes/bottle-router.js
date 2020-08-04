@@ -57,6 +57,22 @@ router.post("/process-all-bottles/:_id", (req, res, next) => {
     });
 });
 
+// ************************
+//    GET DETAILS OF A BOTTLE
+// ************************
+
+router.post("/process-bottle-details/:id", (req, res, next) => {
+  // const { id } = req.params;
+  const id = "5f29642fc8ba611465942794";
+  Bottle.findById(id)
+    .then((bottleDoc) => {
+      res.json(bottleDoc);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 // *****************************
 //    CHANGE NUMBER OF A BOTTLE
 // *****************************
