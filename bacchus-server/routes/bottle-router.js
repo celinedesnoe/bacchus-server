@@ -62,8 +62,7 @@ router.post("/process-all-bottles/:_id", (req, res, next) => {
 // ************************
 
 router.post("/process-bottle-details/:id", (req, res, next) => {
-  // const { id } = req.params;
-  const id = "5f29642fc8ba611465942794";
+  const { id } = req.params;
   Bottle.findById(id)
     .then((bottleDoc) => {
       res.json(bottleDoc);
